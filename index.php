@@ -1,5 +1,10 @@
 <?php
 // index.php
+if (isset($_GET['action']) && $_GET['action'] === 'reset') {
+
+    header('Location: index.php');
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="pl">
@@ -23,7 +28,7 @@
                 <input type="text" name="group" placeholder="Podaj grupę" id="group">
                 <input type="text" name="studentId" placeholder="Podaj numer albumu" id="studentId">
                 <button type="submit" name="action" value="search">Wyszukaj</button>
-                <button type="reset" class="clear">Wyczyść filtry</button>
+                <button type="submit" name="action" value="reset" class="clear">Wyczyść filtry</button>
             </form>
         </div>
 
