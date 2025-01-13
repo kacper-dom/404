@@ -34,49 +34,56 @@ if (isset($_GET['action']) && $_GET['action'] === 'reset') {
 
         <div class="calendar">
             <div class="calendar-header">
-                <button>&#8592;</button>
-                <button>&#8594;</button>
-                <button>Dzisiaj</button>
                 <div class="view-buttons">
-                    <button>Dzień</button>
-                    <button>Tydzień</button>
-                    <button>Miesiąc</button>
-                    <button>Semestr</button>
+                    <button id="prev-day">&#8592;</button>
+                    <button id="current-day">Dzisiaj</button>
+                    <button id="next-day">&#8594;</button>
+                </div>
+
+                <span id="current-date" class="current-date"><?php echo date('d-m-Y'); ?></span>
+
+                <div class="view-buttons">
+                    <button id="view-day">Dzień</button>
+                    <button id="view-week">Tydzień</button>
+                    <button id="view-month">Miesiąc</button>
+                    <button id="view-semester">Semestr</button>
                 </div>
             </div>
 
             <div class="calendar-body">
-                <?php
-                if (!empty($_GET['teacher']))
-                {
-                    include __DIR__ . '/model/searchByLecturer.php';
-                }
-                elseif (!empty($_GET['studentId']))
-                {
-                    include __DIR__ . '/model/searchByStudent.php';
-                }
-                elseif (!empty($_GET['room']))
-                {
-                    include __DIR__ . '/model/searchByRoom.php';
-                }
-                elseif (!empty($_GET['subject']))
-                {
-                    include __DIR__ . '/model/searchBySubject.php';
-                }
-                elseif (!empty($_GET['group']))
-                {
-                    include __DIR__ . '/model/searchByGroup.php';
-                }
-                else
-                {
+                <div class="calendar-left">
+                    <?php
                     for ($hour = 7; $hour <= 21; $hour++) {
-                        echo '<div class="row">';
                         echo '<div class="time-slot">' . str_pad($hour, 2, '0', STR_PAD_LEFT) . ':00</div>';
-                        echo '<div class="calendar-cell"></div>';
-                        echo '</div>';
                     }
-                }
-                ?>
+                    ?>
+                </div>
+
+                <div class="calendar-right">
+                    <?php
+                    if (!empty($_GET['teacher'])) {
+                        include __DIR__ . '/model/searchByLecturer.php';
+                    }
+                    elseif (!empty($_GET['studentId'])) {
+                        include __DIR__ . '/model/searchByStudent.php';
+                    }
+                    elseif (!empty($_GET['room'])) {
+                        include __DIR__ . '/model/searchByRoom.php';
+                    }
+                    elseif (!empty($_GET['subject'])) {
+                        include __DIR__ . '/model/searchBySubject.php';
+                    }
+                    elseif (!empty($_GET['group'])) {
+                        include __DIR__ . '/model/searchByGroup.php';
+                    } else {
+                        for ($hour = 7; $hour <= 21; $hour++) {
+                            echo '<div class="calendar-row">';
+                            echo '<div class="calendar-cell"></div>';
+                            echo '</div>';
+                        }
+                    }
+                    ?>
+                </div>
             </div>
         </div>
     </div>
