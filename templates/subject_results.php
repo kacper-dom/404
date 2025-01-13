@@ -30,7 +30,6 @@
                 $width = 75 / $count;
                 $leftOffset = 5 + ($index * $width);
 
-                // Kolorowanie według formy przedmiotu
                 $subjectTypeClass = '';
                 switch (strtolower($row['SubjectType'])) {
                     case 'testowy':
