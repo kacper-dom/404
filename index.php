@@ -30,6 +30,26 @@ if (isset($_GET['action']) && $_GET['action'] === 'reset') {
                 <button type="submit" name="action" value="search">Wyszukaj</button>
                 <button type="submit" name="action" value="reset" class="clear">Wyczyść filtry</button>
             </form>
+
+            <div class="legend">
+                <h3>Legenda</h3>
+                <div class="legend-item">
+                    <span class="legend-color lab"></span> Laboratorium
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color lecture"></span> Wykład
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color auditorium"></span> Audytoryjne
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color language"></span> Lektorat
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color test"></span> Testowy
+                </div>
+            </div>
+
         </div>
 
         <div class="calendar">
